@@ -1,18 +1,20 @@
 <div class="teste">
-  <div class="card-container" *ngFor="let mock of mock">
-    <h1>{{ mock.name | titlecase }}</h1>
-    <h2>{{ mock.description }}</h2>
-    <div class="topics" *ngIf="mock.topics.length > 1">
-      <div *ngFor="let topic of mock.topics">
+  <div class="card-container" *ngFor="let repositorie of repositories">
+    <h1>{{ repositorie.name | titlecase }}</h1>
+    <h2>{{ repositorie.description }}</h2>
+    <div class="topics" *ngIf="repositorie.topics.length > 1">
+      <div *ngFor="let topic of repositorie.topics">
         {{ topic }}
       </div>
     </div>
     <div class="footer-card">
       <span
-        >{{ mock.language }} · {{ mock.stargazers_count | number }}
+        >{{ repositorie.language }} ·
+        {{ repositorie.stargazers_count | number }}
         ·
-        {{ mock.updated_at | date }}</span
+        {{ repositorie.updated_at | date }}</span
       >
     </div>
+    <button (click)="handlePagination(2)">teste</button>
   </div>
 </div>
