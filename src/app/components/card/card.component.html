@@ -1,4 +1,4 @@
-<div class="teste">
+<div class="main-card">
   <div class="card-container" *ngFor="let repositorie of repositories">
     <h1>{{ repositorie.name | titlecase }}</h1>
     <h2>{{ repositorie.description }}</h2>
@@ -15,6 +15,5 @@
         {{ repositorie.updated_at | date }}</span
       >
     </div>
-    <button (click)="handlePagination(2)">teste</button>
   </div>
 </div>
