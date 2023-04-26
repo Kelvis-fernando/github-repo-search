@@ -1,18 +1,21 @@
 <div class="main-card">
-  <div class="card-container" *ngFor="let repositorie of repositories">
-    <h1>{{ repositorie.name | titlecase }}</h1>
-    <h2>{{ repositorie.description }}</h2>
-    <div class="topics" *ngIf="repositorie.topics.length > 1">
-      <div *ngFor="let topic of repositorie.topics">
+  <div class="card-container" *ngFor="let repository of repositories">
+    <div class="title">
+      <img [src]="repository.owner.avatar_url" alt="user image" />
+      <a [href]="repository.html_url" target="_blank">{{
+        repository.name | titlecase
+      }}</a>
+    </div>
+    <h2>{{ repository.description }}</h2>
+    <div class="topics" *ngIf="repository.topics.length > 1">
+      <div *ngFor="let topic of repository.topics">
         {{ topic }}
       </div>
     </div>
     <div class="footer-card">
-      <span
-        >{{ repositorie.language }} ·
-        {{ repositorie.stargazers_count | number }}
-        ·
-        {{ repositorie.updated_at | date }}</span
+      <span>
+        {{ repository.language }} · Stars: {{ repository.stargazers_count | number }} ·
+        {{ repository.updated_at | date }}</span
       >
     </div>
   </div>

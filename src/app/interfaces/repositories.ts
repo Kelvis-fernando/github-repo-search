@@ -6,4 +6,8 @@ export interface Repositories {
   stargazers_count: number;
   updated_at: string;
   topics: string[];
+  html_url: string;
+  owner: {
+    avatar_url: string;
+  };
 }
