@@ -1,1 +1,18 @@
-<p>card works!</p>
+<div class="teste">
+  <div class="card-container" *ngFor="let mock of mock">
+    <h1>{{ mock.name | titlecase }}</h1>
+    <h2>{{ mock.description }}</h2>
+    <div class="topics" *ngIf="mock.topics.length > 1">
+      <div *ngFor="let topic of mock.topics">
+        {{ topic }}
+      </div>
+    </div>
+    <div class="footer-card">
+      <span
+        >{{ mock.language }} · {{ mock.stargazers_count | number }}
+        ·
+        {{ mock.updated_at | date }}</span
+      >
+    </div>
+  </div>
+</div>

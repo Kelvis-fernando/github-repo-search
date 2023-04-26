@@ -1,0 +1,39 @@
+.teste {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .card-container {
+    width: 60%;
+    height: 25%;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    border: 1px solid #777;
+    margin: 1rem;
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .topics {
+      display: flex;
+      margin-top: 1rem;
+      div {
+        margin-right: 0.5rem;
+        background-color: rgba($color: #3df0e1, $alpha: 0.3);
+        border-radius: 1rem;
+        padding: 0.2rem;
+        font-weight: bold;
+      }
+    }
+
+    .footer-card {
+      display: flex;
+      margin-top: 1rem;
+      span {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
