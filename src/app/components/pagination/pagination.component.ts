@@ -1,4 +1,3 @@
-import { Repositories } from 'src/app/interfaces/repositories';
 import { GithubRepositoriesService } from './../../services/repositoriesService/github-repositories.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
@@ -7,10 +6,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
-// Neste componente eu deixo um ponto de melhoria, para nao deixar os valores do navigation estaticos e seguir conforme a quantidade de paginas que ira retornar do endpoint
 export class PaginationComponent {
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 1;
+  @Input() search!: string;
   @Output() pageChange: EventEmitter<number> = new EventEmitter();
   @Output() newRepositories = new EventEmitter<object>();
 
@@ -18,7 +17,10 @@ export class PaginationComponent {
 
   get pages(): number[] {
     const pagesArray = [];
-    for (let i = 1; i <= this.totalPages; i++) {
+    const maxPages = 10;
+    let startPage = Math.max(1, this.currentPage - Math.floor(maxPages / 2));
+    let endPage = Math.min(this.totalPages, startPage + maxPages - 1);
+    for (let i = startPage; i <= endPage; i++) {
       pagesArray.push(i);
     }
     return pagesArray;
@@ -27,7 +29,7 @@ export class PaginationComponent {
   changePage(page: number) {
     if (page > 0 && page <= this.totalPages) {
       this.githubRepositoriesService
-        .getRepositories(page)
+        .getRepositories(page, this.search !== '' ? this.search : 'br')
         .subscribe((response) => {
           this.currentPage = page;
           this.pageChange.emit(page);

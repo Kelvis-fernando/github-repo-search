@@ -3,7 +3,8 @@
   <app-card [repositories]="repositories"></app-card>
   <app-pagination
     (newRepositories)="onNewRepositories($event)"
-    [currentPage]="1"
-    [totalPages]="8"
+    [currentPage]="currentPage"
+    [totalPages]="100"
+    [search]="search"
   ></app-pagination>
 </div>

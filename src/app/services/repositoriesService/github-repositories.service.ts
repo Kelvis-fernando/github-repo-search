@@ -8,18 +8,19 @@ export class GithubRepositoriesService {
   private apiUrl = `https://api.github.com/search/repositories`;
   constructor(private http: HttpClient) {}
 
-  getRepositories(page: number) {
+  getRepositories(page: number, search = 'br') {
     const params = {
-      q: 'br',
+      q: search,
       page: page.toString(),
       per_page: 10,
     };
     return this.http.get(this.apiUrl, { params });
   }
 
-  searchRepository(repositoru: string) {
+  searchRepository(repositoru = 'br') {
     const params = {
       q: repositoru,
+      page: 1,
       per_page: 10,
     };
     return this.http.get(this.apiUrl, { params });

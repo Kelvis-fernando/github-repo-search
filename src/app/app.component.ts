@@ -10,6 +10,7 @@ import { GithubRepositoriesService } from './services/repositoriesService/github
 export class AppComponent {
   repositories!: Repositories[];
   search = '';
+  currentPage = 1;
 
   constructor(private githubRepositoriesService: GithubRepositoriesService) {}
 
