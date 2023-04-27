@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
+// Neste componente eu deixo um ponto de melhoria, para nao deixar os valores do navigation estaticos e seguir conforme a quantidade de paginas que ira retornar do endpoint
 export class PaginationComponent {
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 1;
