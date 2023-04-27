@@ -22,7 +22,7 @@ export class AppComponent {
           this.repositories = response.items;
         });
     } catch (error) {
-      console.error(error);
+      this.repositories = [];
     }
   }
 
