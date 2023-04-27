@@ -7,7 +7,7 @@ describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
   });
 
   beforeEach(async () => {

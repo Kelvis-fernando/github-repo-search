@@ -13,15 +13,29 @@ export class PaginationComponent {
   @Output() pageChange: EventEmitter<number> = new EventEmitter();
   @Output() newRepositories = new EventEmitter<object>();
 
-  constructor(private githubRepositoriesService: GithubRepositoriesService) {}
+  constructor(public githubRepositoriesService: GithubRepositoriesService) {}
 
   get pages(): number[] {
     const pagesArray = [];
     const maxPages = 10;
     let startPage = Math.max(1, this.currentPage - Math.floor(maxPages / 2));
     let endPage = Math.min(this.totalPages, startPage + maxPages - 1);
+    if (endPage - startPage < maxPages - 1) {
+      startPage = Math.max(1, endPage - maxPages + 1);
+    }
     for (let i = startPage; i <= endPage; i++) {
       pagesArray.push(i);
+    }
+    while (pagesArray.length < maxPages) {
+      if (startPage > 1) {
+        pagesArray.unshift(startPage - 1);
+        startPage--;
+      } else if (endPage < this.totalPages) {
+        endPage++;
+        pagesArray.push(endPage);
+      } else {
+        break;
+      }
     }
     return pagesArray;
   }
