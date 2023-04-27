@@ -1,5 +1,9 @@
 <div class="main">
-  <app-navbar></app-navbar>
+  <app-navbar (searchChanged)="onSearchChanged($event)"></app-navbar>
   <app-card [repositories]="repositories"></app-card>
-  <app-pagination (newRepositories)="onNewRepositories($event)" [currentPage]="1" [totalPages]="8"></app-pagination>
+  <app-pagination
+    (newRepositories)="onNewRepositories($event)"
+    [currentPage]="1"
+    [totalPages]="8"
+  ></app-pagination>
 </div>

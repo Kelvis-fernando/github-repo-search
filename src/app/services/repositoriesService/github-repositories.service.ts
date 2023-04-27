@@ -16,4 +16,12 @@ export class GithubRepositoriesService {
     };
     return this.http.get(this.apiUrl, { params });
   }
+
+  searchRepository(repositoru: string) {
+    const params = {
+      q: repositoru,
+      per_page: 10,
+    };
+    return this.http.get(this.apiUrl, { params });
+  }
 }

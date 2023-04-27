@@ -9,6 +9,7 @@ import { GithubRepositoriesService } from './services/repositoriesService/github
 })
 export class AppComponent {
   repositories!: Repositories[];
+  search = '';
 
   constructor(private githubRepositoriesService: GithubRepositoriesService) {}
 
@@ -26,5 +27,14 @@ export class AppComponent {
 
   onNewRepositories(event: any) {
     this.repositories = event.items;
+  }
+
+  onSearchChanged(newSearchValue: string) {
+    this.search = newSearchValue;
+    this.githubRepositoriesService
+      .searchRepository(newSearchValue)
+      .subscribe((response: any) => {
+        this.repositories = response.items;
+      });
   }
 }
